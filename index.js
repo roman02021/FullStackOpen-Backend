@@ -83,7 +83,7 @@ app.post("/api/persons", (req, res) => {
                 number: req.body.number,
             };
             persons.push(newPerson);
-            res.end();
+            res.send(newPerson);
         }
     } else {
         res.status(400).json({ error: "name or number is missing" }).end();

@@ -99,9 +99,10 @@ const App = () => {
         }
     }
 
-    const filteredPersons = persons.filter((x) =>
-        x.name.toLowerCase().includes(personFilter.toLocaleLowerCase())
-    );
+    const filteredPersons = persons.filter((x) => {
+        console.log(x);
+        return x.name.toLowerCase().includes(personFilter.toLocaleLowerCase());
+    });
 
     useEffect(() => {
         phonebookService
