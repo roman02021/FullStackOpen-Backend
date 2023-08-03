@@ -7,7 +7,8 @@
         "start": "node index.js",
         "dev": "nodemon index.js",
         "test": "echo \"Error: no test specified\" && exit 1",
-        "restart": "cd front && pnpm run build && cd .. && pnpm run dev"
+        "restart": "cd front && pnpm run build && cd .. && pnpm run dev",
+        "lint": "eslint ."
     },
     "author": "",
     "license": "ISC",
@@ -19,6 +20,7 @@
         "morgan": "^1.10.0"
     },
     "devDependencies": {
+        "eslint": "^8.46.0",
         "nodemon": "^2.0.15"
     },
     "type": "module"
