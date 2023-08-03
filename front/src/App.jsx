@@ -33,7 +33,7 @@ const App = () => {
                 );
                 const updatedPerson = {
                     ...alreadyAddedPerson,
-                    number: newPhone,
+                    phone: newPhone,
                 };
                 phonebookService
                     .updatePerson(alreadyAddedPerson.id, updatedPerson)
@@ -63,7 +63,7 @@ const App = () => {
         } else {
             const newPerson = {
                 name: newName,
-                number: newPhone,
+                phone: newPhone,
             };
             phonebookService
                 .addPerson(newPerson)
@@ -76,7 +76,12 @@ const App = () => {
                         setMessage(null);
                     }, 2500);
                 })
-                .catch((error) => alert(error));
+                .catch((error) => {
+                    setErrorMessage(error.response.data.error);
+                    setTimeout(() => {
+                        setMessage(null);
+                    }, 2500);
+                });
         }
     }
 
@@ -99,10 +104,9 @@ const App = () => {
         }
     }
 
-    const filteredPersons = persons.filter((x) => {
-        console.log(x);
-        return x.name.toLowerCase().includes(personFilter.toLocaleLowerCase());
-    });
+    const filteredPersons = persons.filter((x) =>
+        x.name.toLowerCase().includes(personFilter.toLocaleLowerCase())
+    );
 
     useEffect(() => {
         phonebookService
